@@ -11,3 +11,5 @@ const sequelize = new Sequelize('crud app', 'postgres', 'mypassword', {
   } catch (error) {
     console.error('Unable to connect to the database:', error);
   }
+
+  module.exports = sequelize

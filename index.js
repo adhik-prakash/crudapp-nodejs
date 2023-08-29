@@ -1,6 +1,7 @@
 const express = require("express");
 // const bodyParser = require('body-parser')
-require('./model/index')
+const User = require('./model/user')
+
 //import routes
 const testRoute = require('./routes/testRoute');
 
@@ -12,7 +13,7 @@ const port = 3000 || 5000;
 
 //use of routes
 app.use('/api',testRoute)
-
+User.sync()
 
 app.listen(3000, function () {
   console.log(`Listening to the ${port}`);
