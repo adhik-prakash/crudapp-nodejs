@@ -6,24 +6,34 @@ const User = sequelize.define(
   {
     //modelname should be singular
     // Model attributes are defined here
-    firstname: {
+
+    id:{
+      type: DataTypes.INTEGER,
+      primaryKey: true,
+      autoIncrement:true,
+    },
+    firstName: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    lastname: {
+    lastName: {
       type: DataTypes.STRING,
-      defaultValue: "Adhikari",
+      allowNull: false,
+      // defaultValue: "Adhikari",
       // allowNull defaults to true
     },
   },
+  
   {
     // Other model options go here
-    tableName: "users"
+    tableName: "Users"
     //table name must be plural
-  }
+  },
+
 );
 
+
 // `sequelize.define` also returns the model
-console.log(User === sequelize.models.User); // true
+// console.log(User === sequelize.models.User); // true
 
 module.exports = User;
