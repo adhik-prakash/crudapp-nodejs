@@ -1,16 +1,16 @@
 const { DataTypes } = require("sequelize");
-const sequelize = require("./index");
+const sequelize = require("../database");
 
 const User = sequelize.define(
   "User",
   {
     //modelname should be singular
     // Model attributes are defined here
-    firstName: {
+    firstname: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    lastName: {
+    lastname: {
       type: DataTypes.STRING,
       defaultValue: "Adhikari",
       // allowNull defaults to true
@@ -18,8 +18,7 @@ const User = sequelize.define(
   },
   {
     // Other model options go here
-    tableName: "users",
-    tableName: "contacts"
+    tableName: "users"
     //table name must be plural
   }
 );

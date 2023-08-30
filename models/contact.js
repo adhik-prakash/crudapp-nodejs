@@ -1,5 +1,5 @@
 const { DataTypes } = require("sequelize");
-const sequelize = require("./index.js");
+const sequelize = require("../database");
 
 const Contact = sequelize.define(
   "Contact",
@@ -15,6 +15,9 @@ const Contact = sequelize.define(
     },
   },
   {
+    tableName: "contacts"
+
+    
     // Other model options go here
   }
 );
