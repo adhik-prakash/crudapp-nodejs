@@ -30,6 +30,8 @@ exports.getUserList = async (req, res) => {
 };
 
 
+
+
 //to get user details
 
 exports.getUserDetails = async (req, res) => {
