@@ -1,3 +1,5 @@
+
+
 module.exports = {
   up: async (queryInterface, DataTypes) => {
     await queryInterface.createTable("Users", {

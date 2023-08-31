@@ -3,7 +3,8 @@ const express = require("express");
 const bodyParser = require('body-parser')
 
 //import routes
-const Router = require('./routes/user.routes');
+const userRouter = require('./routes/user.routes');
+const contactRouter = require('./routes/contact.routes')
 
 
 
@@ -16,7 +17,9 @@ app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended:true}))
 
 //use of routes
-app.use('/api',Router)
+app.use('/api',userRouter)
+app.use('/api',contactRouter)
+// app.use('/api',Routers)
 
 
 //synchronizing models

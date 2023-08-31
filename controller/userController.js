@@ -1,8 +1,10 @@
 const User = require("../models/user");
 
-//to register user
+
+
+//to register  new user
 exports.register = async (req, res) => {
-  // console.log('hello')
+  // console.log('hello world')
   const firstname = req.body.firstName;
   const lastname = req.body.lastName;
   // console.log(firstname)
@@ -10,6 +12,7 @@ exports.register = async (req, res) => {
     firstName: firstname,
     lastName: lastname,
   });
+
 
   //to add user to database
   const adduser = await newUser.save();
@@ -29,16 +32,14 @@ exports.getUserList = async (req, res) => {
   res.status(200).json({ data: users, messsage: "list of users:" });
 };
 
-
-
-
 //to get user details
 
 exports.getUserDetails = async (req, res) => {
   let user = await User.findByPk(req.params.id);
 
   if (!user) {
-    res.status(400).json({ error: "couldn't find the user" });
+   res.status(400).json({ error: "couldn't find the user" });
   }
+  
   res.status(200).json({ data: user });
 };
