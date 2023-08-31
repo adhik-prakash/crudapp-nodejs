@@ -4,7 +4,7 @@ const User = require("../models/user");
 
 //to register  new user
 exports.register = async (req, res) => {
-  // console.log('hello world')
+  // console.log('prakash')
   const firstname = req.body.firstName;
   const lastname = req.body.lastName;
   // console.log(firstname)
@@ -43,3 +43,8 @@ exports.getUserDetails = async (req, res) => {
   
   res.status(200).json({ data: user });
 };
+
+
+//to delete users
+
+

@@ -1,25 +1,21 @@
 const express = require("express");
 
-const bodyParser = require('body-parser')
+const bodyParser = require("body-parser");
 
 //import routes
-const userRouter = require('./routes/user.routes');
-const contactRouter = require('./routes/contact.routes')
-
-
+const userRouter = require("./routes/user.routes");
+const contactRouter = require("./routes/contact.routes");
 
 const app = express();
 
+const port = 3000;
 
-const port = 3000 ;
-
-app.use(bodyParser.json())
-app.use(bodyParser.urlencoded({extended:true}))
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 //use of routes
-app.use('/api',userRouter)
-app.use('/api',contactRouter)
-// app.use('/api',Routers)
+app.use("/api", userRouter);
+app.use("/api", contactRouter);
 
 
 //synchronizing models
