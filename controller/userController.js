@@ -1,50 +1,58 @@
 const User = require("../models/user");
 
-
-
-//to register  new user
 exports.register = async (req, res) => {
-  // console.log('prakash')
   const firstname = req.body.firstName;
   const lastname = req.body.lastName;
-  // console.log(firstname)
-  let newUser = new User({
+  const addUser = new User({
     firstName: firstname,
     lastName: lastname,
   });
-
-
-  //to add user to database
-  const adduser = await newUser.save();
-  if (!adduser) {
+  if (!addUser) {
     res.status(400).json({ error: "cannot save the user  to database" });
-  }
-  res.status(200).json({ data: newUser, message: "user added successfully" });
+  } 
+  res.status(200).json({ data: addUser, message: "user added successfully" });
 };
 
-//to get all user list
 exports.getUserList = async (req, res) => {
-  let users = await User.findAll();
-
+  const users = await User.findAll();
   if (!users) {
     res.status(400).json({ error: "cannot find the users" });
   }
   res.status(200).json({ data: users, messsage: "list of users:" });
 };
 
-//to get user details
-
 exports.getUserDetails = async (req, res) => {
-  let user = await User.findByPk(req.params.id);
-
+  const user = await User.findByPk(req.params.id);
   if (!user) {
-   res.status(400).json({ error: "couldn't find the user" });
+    res.status(400).json({ error: "couldn't find the user" });
   }
-  
   res.status(200).json({ data: user });
 };
 
+exports.deleteUser = async (req, res) => {
+  let user = await User.findByPk(req.params.id);
+  if (!user) {
+    res.status(400).json({ error: "unable to find user" });
+  }
+  User.destroy({
+    where: {
+      id: req.params.id,
+    },
+  });
+  res.status(200).json({ data: user,  });
+};
 
-//to delete users
-
-
+exports.updateUser = async (req, res) => {
+  let user =  User.findByPk(req.params.id);
+  if (!user) {
+    res.status(400).json({ error: "unable to update the user" });
+  }
+  await User.update(
+    {lastName:req.body.lastName},
+    {
+     where: {
+      id: req.params.id,
+    }},
+  );
+  res.status(200).json({ data: user });
+};

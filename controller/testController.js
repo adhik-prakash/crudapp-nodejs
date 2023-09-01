@@ -1,14 +1,7 @@
-// exports.testFunction = async(req,res)=>{
+exports.testFunction = async (req, res) => {
+  console.log("hello");
 
-//     console.log('helo');
-        
-//     // const response= await fetch('https://jsonplaceholder.typicode.com/todos/1')
-//     //   .then(response => response.json())
-//     //   .then(data => res.json(data) );
-
-
-      
-      
-
-
-// } 
+  const response = await fetch("https://jsonplaceholder.typicode.com/todos/")
+    .then((response) => response.json())
+    .then((data) => res.json(data));
+};
